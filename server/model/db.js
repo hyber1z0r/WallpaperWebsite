@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var dbURI = 'mongodb://localhost/hyber1z0r';
 
 //This is set by the backend tests
-if (typeof global.TEST_DATABASE != "undefined") {
+if (typeof global.TEST_DATABASE !== "undefined") {
 	dbURI = global.TEST_DATABASE;
 }
 

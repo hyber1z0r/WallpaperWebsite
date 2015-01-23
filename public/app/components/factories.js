@@ -10,7 +10,7 @@ mod.factory('WallpaperFactory', function ($http) {
 			})
 			.error(function (err) {
 				callback(err);
-			})
+			});
 	};
 
 	var getWallpapersWithRes = function (res, callback) {
@@ -20,14 +20,14 @@ mod.factory('WallpaperFactory', function ($http) {
 			})
 			.error(function (err) {
 				callback(err);
-			})
+			});
 	};
 
 	var searchTags = function (tags, callback) {
 		// tags should be an array of strings - should i check for that? No right?
 		var search = '';
 		for (var i = 0; i < tags.length; i++) {
-			if (i == tags.length - 1) { // this is the last
+			if (i === tags.length - 1) { // this is the last
 				search += tags[i];
 			} else { // this is all others
 				search += tags[i] + ',';
@@ -40,14 +40,14 @@ mod.factory('WallpaperFactory', function ($http) {
 			})
 			.error(function (err) {
 				callback(err);
-			})
+			});
 	};
 
 	var searchCategory = function (categories, callback) {
 		// categories should be an array of strings - should i check for that? No right?
 		var search = '';
-		for (var i = 0; i < tags.length; i++) {
-			if (i == categories.length - 1) { // this is the last
+		for (var i = 0; i < categories.length; i++) {
+			if (i === categories.length - 1) { // this is the last
 				search += categories[i];
 			} else { // this is all others
 				search += categories[i] + ',';
@@ -60,7 +60,7 @@ mod.factory('WallpaperFactory', function ($http) {
 			})
 			.error(function (err) {
 				callback(err);
-			})
+			});
 	};
 
 	var getLatest = function (limit, callback) {
@@ -70,7 +70,7 @@ mod.factory('WallpaperFactory', function ($http) {
 			})
 			.error(function (err) {
 				callback(err);
-			})
+			});
 	};
 
 	var getHottest = function (limit, callback) {
@@ -80,7 +80,7 @@ mod.factory('WallpaperFactory', function ($http) {
 			})
 			.error(function (err) {
 				callback(err);
-			})
+			});
 	};
 
 	return {
@@ -90,7 +90,7 @@ mod.factory('WallpaperFactory', function ($http) {
 		searchCategory: searchCategory,
 		getLatest: getLatest,
 		getHottest: getHottest
-	}
+	};
 });
 
 // TODO: Make rest of factory functions, that speaks with REST

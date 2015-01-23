@@ -45,7 +45,7 @@ function getWpByRes(res, callback) {
 	wallpaper.find({resolution: {$regex: new RegExp(res, 'i')}}, function (err, wps) {
 		if (err) {
 			callback(err);
-		} else if (wps.length == 0) {
+		} else if (wps.length === 0) {
 			var e = new Error('Not found for given resolution');
 			e.status = 404;
 			callback(e);
@@ -59,7 +59,7 @@ function searchTags(search, callback) {
 	var cb = function (err, wps) {
 		if (err) {
 			callback(err);
-		} else if (wps.length == 0) {
+		} else if (wps.length === 0) {
 			var e = new Error('Not found for given resolution');
 			e.status = 404;
 			callback(e);
@@ -86,7 +86,7 @@ function searchCategory(search, callback) {
 	var cb = function (err, wps) {
 		if (err) {
 			callback(err);
-		} else if (wps.length == 0) {
+		} else if (wps.length === 0) {
 			var e = new Error('Not found for given resolution');
 			e.status = 404;
 			callback(e);
