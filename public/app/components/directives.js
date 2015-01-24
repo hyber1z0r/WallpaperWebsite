@@ -7,6 +7,11 @@ angular.module('hyber.directives', []).
     return {
       restrict: 'AE',
       replace: 'true',
+		link: function (scope, element, attributes) {
+			scope.overskrift = attributes.overskrift;
+			scope.beskrivelse = attributes.beskrivelse;
+			scope.fa = attributes.fa;
+		},
       templateUrl: '/app/components/tpl/photogal.html'
     };
   });
