@@ -11,7 +11,8 @@ angular.module('hyber', [
 	'hyber.filters',
 	'hyber.services',
 	'hyber.home',
-	'hyber.latest'
+	'hyber.latest',
+	'hyber.random'
 ]).
 	config(['$routeProvider', function ($routeProvider) {
 		$routeProvider.otherwise({redirectTo: '/home'});
