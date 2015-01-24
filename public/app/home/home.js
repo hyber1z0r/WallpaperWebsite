@@ -7,6 +7,6 @@ angular.module('hyber.home', ['ngRoute'])
 			controller: 'HomeCtrl'
 		});
 	}])
-	.controller('HomeCtrl', function ($scope, WallpaperFactory) {
+	.controller('HomeCtrl', function ($scope) {
 
 	});

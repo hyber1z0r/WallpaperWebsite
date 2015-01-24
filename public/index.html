@@ -25,11 +25,11 @@
             </button>
             <a class="navbar-brand" href="#/home">HYBER.</a>
         </div>
-        <div class="navbar-collapse collapse navbar-right">
+        <div class="navbar-collapse collapse navbar-left">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#/home">HOME</a></li>
-                <li><a href="#/about">ABOUT</a></li>
-                <li><a href="#/contact">CONTACT</a></li>
+                <li><a href="#/latest" class="text-center" data-placement="bottom" data-animation="am-flip-x" bs-tooltip="latestTt"><i class="fa fa-2x fa-clock-o"></i></a></li>
+                <li><a href="#/random" class="text-center" data-placement="bottom" data-animation="am-flip-x" bs-tooltip="randomTt"><i class="fa fa-2x fa-random"></i></a></li>
+                <li><a href="#/search" class="text-center" data-placement="bottom" data-animation="am-flip-x" bs-tooltip="searchTt"><i class="fa fa-2x fa-search"></i></a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -82,8 +82,12 @@
 
 <script src="vendor/angular/angular.min.js"></script>
 <script src="vendor/angular-route/angular-route.min.js"></script>
+<script src="vendor/angular-animate/angular-animate.min.js"></script>
+<script src="vendor/angular-strap/dist/angular-strap.min.js"></script>
+<script src="vendor/angular-strap/dist/angular-strap.tpl.min.js"></script>
 <script src="app/app.js"></script>
 <script src="app/home/home.js"></script>
+<script src="app/latest/latest.js"></script>
 <script src="app/components/controllers.js"></script>
 <script src="app/components/directives.js"></script>
 <script src="app/components/factories.js"></script>
