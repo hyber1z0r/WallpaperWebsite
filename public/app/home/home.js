@@ -8,11 +8,5 @@ angular.module('hyber.home', ['ngRoute'])
 		});
 	}])
 	.controller('HomeCtrl', function ($scope, WallpaperFactory) {
-		WallpaperFactory.getWallpaper(1, function (err, wallpaper) {
-			if (err) {
-				console.log(err);
-			} else {
-				$scope.wallpaper = wallpaper;
-			}
-		})
+
 	});
