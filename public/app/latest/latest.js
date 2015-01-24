@@ -11,5 +11,13 @@ angular.module('hyber.latest', ['ngRoute'])
 		});
 	}])
 	.controller('LatestCtrl', function ($scope, WallpaperFactory) {
-
+		$scope.limit = 20;
+		WallpaperFactory.getLatest($scope.limit, function (err, wallpapers) {
+			if(err) {
+				console.log(err);
+			} else {
+				$scope.wallpapers = wallpapers;
+				console.log(wallpapers);
+			}
+		});
 	});
