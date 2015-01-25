@@ -3,7 +3,7 @@
 angular.module('hyber.factories', [])
 	.factory('WallpaperFactory', function ($http) {
 		var getWallpaper = function (id, callback) {
-			$http.get('/api/' + id)
+			$http.get('/api/wallpaper/' + id)
 				.success(function (data) {
 					callback(null, data);
 				})

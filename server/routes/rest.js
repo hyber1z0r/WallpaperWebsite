@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var dataSource = require('../model/datasource');
 
-router.get('/:id', function (req, res, next) {
+router.get('/wallpaper/:id', function (req, res, next) {
 	var id = req.params.id;
 	dataSource.getWallpaper(id, function (err, wallpaper) {
 		if (err) {
