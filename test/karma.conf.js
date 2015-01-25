@@ -1,48 +1,48 @@
 module.exports = function (config) {
-	config.set({
+    config.set({
 
-			basePath: '../',
+            basePath: '../',
 
-			files: [
-				'public/vendor/angular/angular.js',
-				'public/vendor/angular-route/angular-route.js',
-				'public/vendor/angular-mocks/angular-mocks.js',
-				'public/app/*.js',
-				'public/app/components/**/*.js',
-				'public/app/components/*.js',
-				'public/app/view*/**/*.js',
-				'test/karma-tests/app/view*/**/*.js',
-				'test/karma-tests/app/components/*.js'
-			],
-			preprocessors: {
-				'server/**/*.js': 'coverage'
-			},
+            files: [
+                'public/vendor/angular/angular.js',
+                'public/vendor/angular-route/angular-route.js',
+                'public/vendor/angular-mocks/angular-mocks.js',
+                'public/app/*.js',
+                'public/app/components/**/*.js',
+                'public/app/components/*.js',
+                'public/app/view*/**/*.js',
+                'test/karma-tests/app/view*/**/*.js',
+                'test/karma-tests/app/components/*.js'
+            ],
+            preprocessors: {
+                'server/**/*.js': 'coverage'
+            },
 
-			reporters: ['coverage'],
+            reporters: ['coverage'],
 
-			coverageReporter: {
-				type: 'html',
-				dir: 'coverage/'
-			},
+            coverageReporter: {
+                type: 'html',
+                dir: 'coverage/'
+            },
 
-			autoWatch: true,
+            autoWatch: true,
 
-			frameworks: ['jasmine'],
+            frameworks: ['jasmine'],
 
-			browsers: ['Chrome'],
+            browsers: ['Chrome'],
 
-			plugins: [
-				'karma-chrome-launcher',
-				'karma-firefox-launcher',
-				'karma-jasmine'
-			],
+            plugins: [
+                'karma-chrome-launcher',
+                'karma-firefox-launcher',
+                'karma-jasmine'
+            ],
 
-			junitReporter: {
-				outputFile: 'test_out/unit.xml',
-				suite: 'unit'
-			}
-		}
-	)
-	;
+            junitReporter: {
+                outputFile: 'test_out/unit.xml',
+                suite: 'unit'
+            }
+        }
+    )
+    ;
 }
 ;

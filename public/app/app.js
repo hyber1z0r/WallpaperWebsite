@@ -2,18 +2,18 @@
 
 // Declare app level module which depends on views, and components
 angular.module('hyber', [
-	'ngRoute',
-	'ngAnimate',
-	'mgcrea.ngStrap',
-	'hyber.controllers',
-	'hyber.directives',
-	'hyber.factories',
-	'hyber.filters',
-	'hyber.services',
-	'hyber.home',
-	'hyber.latest',
-	'hyber.random'
+    'ngRoute',
+    'ngAnimate',
+    'mgcrea.ngStrap',
+    'hyber.controllers',
+    'hyber.directives',
+    'hyber.factories',
+    'hyber.filters',
+    'hyber.services',
+    'hyber.home',
+    'hyber.latest',
+    'hyber.random'
 ]).
-	config(['$routeProvider', function ($routeProvider) {
-		$routeProvider.otherwise({redirectTo: '/home'});
-	}]);
+    config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.otherwise({redirectTo: '/home'});
+    }]);
