@@ -7,10 +7,10 @@ var app = require('../../server/app');
 var supertest = require('supertest');
 
 describe('REST API', function () {
-	describe('/wallpaper/:id', function () {
+	describe('/:id', function () {
 		it('Should return 1 wallpaper with id 2', function (done) {
 			supertest(app)
-				.get('/api/wallpaper/' + 2)
+				.get('/api/' + 2)
 				.end(function (err, res) {
 					should.not.exist(err);
 					var wallpaper = JSON.parse(res.text);
@@ -21,29 +21,29 @@ describe('REST API', function () {
 
 		it('Should return 404 when requested id does not exist', function (done) {
 			supertest(app)
-				.get('/api/wallpaper/' + 19999)
+				.get('/api/' + 19999)
 				.expect(404, done);
 		});
 
 		it('Should return 400 when requested id is not an id', function (done) {
 			var id = 'notanid';
 			supertest(app)
-				.get('/api/wallpaper/' + id)
+				.get('/api/' + id)
 				.expect(400, done);
 		});
 
 		it('Should return 404 when nothing is requested, because "nothing" was not found', function (done) {
 			supertest(app)
-				.get('/api/wallpaper/')
+				.get('/api/')
 				.expect(404, done);
 		});
 	});
 
-	describe('/wallpaper/res/:res', function () {
+	describe('/res/:res', function () {
 		it('Should return 8 wallpapers with the given resolution', function (done) {
 			var resolution = '1920x1080';
 			supertest(app)
-				.get('/api/wallpaper/res/' + resolution)
+				.get('/api/res/' + resolution)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(8);
@@ -57,7 +57,7 @@ describe('REST API', function () {
 		it('Should return 8 wallpapers with the given resolution (case insensitive)', function (done) {
 			var resolution = '1920X1080';
 			supertest(app)
-				.get('/api/wallpaper/res/' + resolution)
+				.get('/api/res/' + resolution)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(8);
@@ -71,23 +71,23 @@ describe('REST API', function () {
 		it('Should return status 400 when resolution is not in valid format', function (done) {
 			var resolution = '1280x';
 			supertest(app)
-				.get('/api/wallpaper/res/' + resolution)
+				.get('/api/res/' + resolution)
 				.expect(400, done);
 		});
 
 		it('Should return status 404 when the resolution is not found', function (done) {
 			var resolution = '1920x44000';
 			supertest(app)
-				.get('/api/wallpaper/res/' + resolution)
+				.get('/api/res/' + resolution)
 				.expect(404, done);
 		});
 	});
 
-	describe('/wallpaper/tags/:queries', function () {
+	describe('/tags/:queries', function () {
 		it('Should return 3 wallpapers with the right tags', function (done) {
 			var tag = 'flower'; // id: 1, 2, 8 has flower as a tag
 			supertest(app)
-				.get('/api/wallpaper/tags/' + tag)
+				.get('/api/tags/' + tag)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(3);
@@ -101,7 +101,7 @@ describe('REST API', function () {
 		it('Should return 3 wallpapers with the right tags wierd format', function (done) {
 			var tag = 'flOwEr'; // id: 1, 2, 8 has flower as a tag
 			supertest(app)
-				.get('/api/wallpaper/tags/' + tag)
+				.get('/api/tags/' + tag)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(3);
@@ -115,7 +115,7 @@ describe('REST API', function () {
 		it('Should return 5 wallpapers when given an array of search strings in correct format', function (done) {
 			var tags = 'flower,outside';
 			supertest(app)
-				.get('/api/wallpaper/tags/' + tags)
+				.get('/api/tags/' + tags)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(5);
@@ -125,23 +125,23 @@ describe('REST API', function () {
 
 		it('Should return 400 when no tag is entered', function (done) {
 			supertest(app)
-				.get('/api/wallpaper/tags/')
+				.get('/api/tags/')
 				.expect(400, done);
 		});
 
 		it('Should return 404 when tag is not found', function (done) {
 			var tag = 'tagThatDoesNotExist';
 			supertest(app)
-				.get('/api/wallpaper/tags/' + tag)
+				.get('/api/tags/' + tag)
 				.expect(404, done);
 		});
 	});
 
-	describe('/wallpaper/category/:queries', function () {
+	describe('/category/:queries', function () {
 		it('Should return 2 wallpapers with the right category', function (done) {
 			var category = 'general'; // id: 1, 2 has general as category
 			supertest(app)
-				.get('/api/wallpaper/category/' + category)
+				.get('/api/category/' + category)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(2);
@@ -155,7 +155,7 @@ describe('REST API', function () {
 		it('Should return 2 wallpapers with the right tags wierd format', function (done) {
 			var category = 'gEneRAl'; // id: 1, 2, 8 has flower as a tag
 			supertest(app)
-				.get('/api/wallpaper/category/' + category)
+				.get('/api/category/' + category)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(2);
@@ -169,7 +169,7 @@ describe('REST API', function () {
 		it('Should return 4 wallpapers when given an array of search strings in correct format', function (done) {
 			var categories = 'pokémon,anime';
 			supertest(app)
-				.get('/api/wallpaper/category/' + categories)
+				.get('/api/category/' + categories)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(4);
@@ -179,23 +179,24 @@ describe('REST API', function () {
 
 		it('Should return 400 when no category is entered', function (done) {
 			supertest(app)
-				.get('/api/wallpaper/category/')
+				.get('/api/category/')
 				.expect(400, done);
 		});
 
 		it('Should return 404 when category is not found', function (done) {
 			var category = 'unrealisticCategory';
 			supertest(app)
-				.get('/api/wallpaper/category/' + category)
+				.get('/api/category/' + category)
 				.expect(404, done);
 		});
 	});
 
-	describe('/wallpaper/latest/:limit', function () {
+	describe('/sorted/:sort/:limit', function () {
 		it('Should return 5 sorted by added-date', function (done) {
 			var limit = 5;
+			var sort = '-added';
 			supertest(app)
-				.get('/api/wallpaper/latest/' + limit)
+				.get('/api/sorted/' + sort + '/' + limit)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(5);
@@ -209,8 +210,9 @@ describe('REST API', function () {
 
 		it('Should return 20 when no limit is entered, sorted by added-date', function (done) {
 			var limit = null;
+			var sort = '-added';
 			supertest(app)
-				.get('/api/wallpaper/latest/' + limit)
+				.get('/api/sorted/' + sort + '/' + limit)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(10);
@@ -223,8 +225,9 @@ describe('REST API', function () {
 
 		it('Should return 20 when gibberish is entered, sorted by added-date', function (done) {
 			var gibber = 'asdadaDASDaadakj231';
+			var sort = '-added';
 			supertest(app)
-				.get('/api/wallpaper/latest/' + gibber)
+				.get('/api/sorted/' + sort + '/' + gibber)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(10);
@@ -234,13 +237,12 @@ describe('REST API', function () {
 					done();
 				});
 		});
-	});
 
-	describe('/wallpaper/hottest/:limit', function () {
 		it('Should return 5 sorted by views', function (done) {
 			var limit = 5;
+			var sort = '-views';
 			supertest(app)
-				.get('/api/wallpaper/hottest/' + limit)
+				.get('/api/sorted/' + sort + '/' + limit)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(5);
@@ -254,8 +256,9 @@ describe('REST API', function () {
 
 		it('Should return 20 when no limit is entered, sorted by views', function (done) {
 			var limit = null;
+			var sort = '-views';
 			supertest(app)
-				.get('/api/wallpaper/hottest/' + limit)
+				.get('/api/sorted/' + sort + '/' + limit)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(10);
@@ -268,8 +271,9 @@ describe('REST API', function () {
 
 		it('Should return 20 when gibberish is entered, sorted by views', function (done) {
 			var gibber = 'asdadaDASDaadakj231';
+			var sort = '-views';
 			supertest(app)
-				.get('/api/wallpaper/hottest/' + gibber)
+				.get('/api/sorted/' + sort + '/' + gibber)
 				.end(function (err, res) {
 					var wallpapers = JSON.parse(res.text);
 					wallpapers.length.should.equal(10);

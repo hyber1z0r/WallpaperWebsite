@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var dataSource = require('../model/datasource');
 
-router.get('/wallpaper/:id', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
 	var id = req.params.id;
 	dataSource.getWallpaper(id, function (err, wallpaper) {
 		if (err) {
@@ -15,7 +15,7 @@ router.get('/wallpaper/:id', function (req, res, next) {
 	});
 });
 
-router.get('/wallpaper/res/:reso', function (req, res, next) {
+router.get('/res/:reso', function (req, res, next) {
 	var resolution = req.params.reso;
 	dataSource.getWpByRes(resolution, function (err, wallpapers) {
 		if (err) {
@@ -25,7 +25,7 @@ router.get('/wallpaper/res/:reso', function (req, res, next) {
 	});
 });
 
-router.get('/wallpaper/tags/:queries', function (req, res, next) {
+router.get('/tags/:queries', function (req, res, next) {
 	var tags = req.params.queries.split(',');
 	dataSource.searchTags(tags, function (err, wallpapers) {
 		if (err) {
@@ -35,7 +35,7 @@ router.get('/wallpaper/tags/:queries', function (req, res, next) {
 	});
 });
 
-router.get('/wallpaper/category/:queries', function (req, res, next) {
+router.get('/category/:queries', function (req, res, next) {
 	var categories = req.params.queries.split(',');
 	dataSource.searchCategory(categories, function (err, wallpapers) {
 		if (err) {
@@ -45,19 +45,10 @@ router.get('/wallpaper/category/:queries', function (req, res, next) {
 	});
 });
 
-router.get('/wallpaper/latest/:limit', function (req, res, next) {
+router.get('/sorted/:sort/:limit', function (req, res) {
+	var sort = req.params.sort;
 	var limit = req.params.limit;
-	dataSource.getLatest(limit, function (err, wallpapers) {
-		if (err) {
-			return next(err);
-		}
-		res.json(wallpapers);
-	});
-});
-
-router.get('/wallpaper/hottest/:limit', function (req, res, next) {
-	var limit = req.params.limit;
-	dataSource.getHottest(limit, function (err, wallpapers) {
+	dataSource.getSorted(sort, limit, function (err, wallpapers) {
 		if (err) {
 			return next(err);
 		}

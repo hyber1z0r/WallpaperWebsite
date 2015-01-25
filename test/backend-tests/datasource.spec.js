@@ -181,10 +181,11 @@ describe('dataSource', function () {
 		});
 	});
 
-	describe('getLatest', function () {
+	describe('getSorted', function () {
 		it('Should return 5 sorted by added-date', function (done) {
 			var limit = 5;
-			dataSource.getLatest(limit, function (err, wps) {
+			var sort = '-added';
+			dataSource.getSorted(sort, limit, function (err, wps) {
 				wps.length.should.equal(5);
 				for (var i = 0; i < wps.length - 1; i++) {
 					wps[i].added.should.be.greaterThan(wps[i + 1].added);
@@ -196,7 +197,8 @@ describe('dataSource', function () {
 		// Now it's just returning all -> 10 wallpapers
 		it('Should return the 20 latest when no limit is given, sorted by newest first', function (done) {
 			var limit = null;
-			dataSource.getLatest(limit, function (err, wps) {
+			var sort = '-added';
+			dataSource.getSorted(sort, limit, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(10);
 				for (var i = 0; i < wps.length - 1; i++) {
@@ -205,12 +207,11 @@ describe('dataSource', function () {
 				done();
 			});
 		});
-	});
 
-	describe('getHottest', function () {
 		it('Should return the 5 hottest, sorted by highest first', function (done) {
 			var limit = 5;
-			dataSource.getHottest(limit, function (err, wps) {
+			var sort = '-views';
+			dataSource.getSorted(sort, limit, function (err, wps) {
 				should.not.exist(err);
 				for (var i = 0; i < wps.length - 1; i++) {
 					wps[i].views.should.be.greaterThan(wps[i+1].views); // checking they are sorted
@@ -226,7 +227,8 @@ describe('dataSource', function () {
 		// Now it's just returning all -> 10 wallpapers
 		it('Should return the 20 hottest when no limit is given, sorted by highest first', function (done) {
 			var limit = null;
-			dataSource.getHottest(limit, function (err, wps) {
+			var sort = '-views';
+			dataSource.getSorted(sort, limit, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(10);
 				for (var i = 0; i < wps.length - 1; i++) {
