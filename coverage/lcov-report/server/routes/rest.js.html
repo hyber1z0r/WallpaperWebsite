@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">server/routes/rest.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">95% <small>(38 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">97.14% <small>(34 / 35)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">83.33% <small>(10 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">90% <small>(9 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">100% <small>(12 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">95% <small>(38 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">97.14% <small>(34 / 35)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -274,16 +274,7 @@
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+59</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -331,22 +322,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -357,7 +339,7 @@ var express = require('express');
 var router = express.Router();
 var dataSource = require('../model/datasource');
 &nbsp;
-router.get('/wallpaper/:id', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
 	var id = req.params.id;
 	dataSource.getWallpaper(id, function (err, wallpaper) {
 		if (err) {
@@ -367,7 +349,7 @@ router.get('/wallpaper/:id', function (req, res, next) {
 	});
 });
 &nbsp;
-router.get('/wallpaper/res/:reso', function (req, res, next) {
+router.get('/res/:reso', function (req, res, next) {
 	var resolution = req.params.reso;
 	dataSource.getWpByRes(resolution, function (err, wallpapers) {
 		if (err) {
@@ -377,8 +359,8 @@ router.get('/wallpaper/res/:reso', function (req, res, next) {
 	});
 });
 &nbsp;
-router.get('/wallpaper/tags/:queries', function (req, res, next) {
-	var tags = req.params.queries.split(',');
+router.get('/tags/:tag', function (req, res, next) {
+	var tags = req.params.tag.split(',');
 	dataSource.searchTags(tags, function (err, wallpapers) {
 		if (err) {
 			return next(err);
@@ -387,8 +369,8 @@ router.get('/wallpaper/tags/:queries', function (req, res, next) {
 	});
 });
 &nbsp;
-router.get('/wallpaper/category/:queries', function (req, res, next) {
-	var categories = req.params.queries.split(',');
+router.get('/category/:cat', function (req, res, next) {
+	var categories = req.params.cat.split(',');
 	dataSource.searchCategory(categories, function (err, wallpapers) {
 		if (err) {
 			return next(err);
@@ -397,19 +379,10 @@ router.get('/wallpaper/category/:queries', function (req, res, next) {
 	});
 });
 &nbsp;
-router.get('/wallpaper/latest/:limit', function (req, res, next) {
+router.get('/sorted/:sort/:limit', function (req, res) {
+	var sort = req.params.sort;
 	var limit = req.params.limit;
-	dataSource.getLatest(limit, function (err, wallpapers) {
-		<span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
-<span class="cstat-no" title="statement not covered" >			return next(err);</span>
-		}
-		res.json(wallpapers);
-	});
-});
-&nbsp;
-router.get('/wallpaper/hottest/:limit', function (req, res, next) {
-	var limit = req.params.limit;
-	dataSource.getHottest(limit, function (err, wallpapers) {
+	dataSource.getSorted(sort, limit, function (err, wallpapers) {
 		<span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
 <span class="cstat-no" title="statement not covered" >			return next(err);</span>
 		}
@@ -422,7 +395,7 @@ module.exports = router;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jan 25 2015 11:19:29 GMT+0100 (CET)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jan 25 2015 20:17:43 GMT+0100 (CET)</div>
 </div>
 
 <script src="../../prettify.js"></script>

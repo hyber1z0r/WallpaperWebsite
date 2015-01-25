@@ -109,6 +109,7 @@ function searchCategory(search, callback) {
 	}
 }
 
+// sort by views or added date
 function getSorted(sort, limit, callback) {
 	wallpaper.find({}, '', {sort: sort, limit: limit || 20}, function (err, wps) {
 		if (err) {
