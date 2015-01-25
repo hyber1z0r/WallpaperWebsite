@@ -1,10 +1,3 @@
-# TO RUN TEST CASES WITH COVERAGE
-All files should end with spec.js`
-Run this command from root of project.
-```
-istanbul cover _mocha -- test/backend-tests -R spec
-``
-
 # Angular-Express-Mongo-seed
 
 This project is an application skeleton for a typical
