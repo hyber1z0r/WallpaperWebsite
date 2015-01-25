@@ -109,26 +109,6 @@ function searchCategory(search, callback) {
 	}
 }
 
-function getLatest(limit, callback) {
-	wallpaper.find({}, '', {sort: '-added', limit: limit || 20}, function (err, wps) {
-		if (err) {
-			callback(err);
-		} else {
-			callback(null, wps);
-		}
-	});
-}
-
-function getHottest(limit, callback) {
-	wallpaper.find({}, '', {sort: '-views', limit: limit || 20}, function (err, wps) {
-		if (err) {
-			callback(err);
-		} else {
-			callback(null, wps);
-		}
-	});
-}
-
 function getSorted(sort, limit, callback) {
 	wallpaper.find({}, '', {sort: sort, limit: limit || 20}, function (err, wps) {
 		if (err) {
@@ -146,7 +126,5 @@ module.exports = {
 	getWpByRes: getWpByRes,
 	searchTags: searchTags,
 	searchCategory: searchCategory,
-	getLatest: getLatest,
-	getHottest: getHottest,
 	getSorted: getSorted
 };
