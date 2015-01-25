@@ -12,6 +12,6 @@ angular.module('hyber.directives', []).
 			scope.beskrivelse = attributes.beskrivelse;
 			scope.fa = attributes.fa;
 		},
-      templateUrl: '/app/components/tpl/photogal.html'
+      templateUrl: '/app/components/tpl/photogal.tpl.html'
     };
   });
