@@ -25,8 +25,8 @@ router.get('/res/:reso', function (req, res, next) {
 	});
 });
 
-router.get('/tags/:queries', function (req, res, next) {
-	var tags = req.params.queries.split(',');
+router.get('/tags/:tag', function (req, res, next) {
+	var tags = req.params.tag.split(',');
 	dataSource.searchTags(tags, function (err, wallpapers) {
 		if (err) {
 			return next(err);
@@ -35,8 +35,8 @@ router.get('/tags/:queries', function (req, res, next) {
 	});
 });
 
-router.get('/category/:queries', function (req, res, next) {
-	var categories = req.params.queries.split(',');
+router.get('/category/:cat', function (req, res, next) {
+	var categories = req.params.cat.split(',');
 	dataSource.searchCategory(categories, function (err, wallpapers) {
 		if (err) {
 			return next(err);

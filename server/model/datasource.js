@@ -87,7 +87,7 @@ function searchCategory(search, callback) {
 		if (err) {
 			callback(err);
 		} else if (wps.length === 0) {
-			var e = new Error('Not found for given resolution');
+			var e = new Error('Not found for given category');
 			e.status = 404;
 			callback(e);
 		} else {
