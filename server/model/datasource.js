@@ -67,7 +67,7 @@ function searchField(search, field, callback) {
 	switch (field.toUpperCase()) {
 		case 'CATEGORY':
 			if(_.isArray(search)) {
-				query = {category: {$in: search.map(function (e) {return e.toLowerCase();})}}
+				query = {category: {$in: search.map(function (e) {return e.toLowerCase();})}};
 			} else {
 				query = {category: {$regex: new RegExp(search, 'i')}};
 			}
@@ -75,7 +75,7 @@ function searchField(search, field, callback) {
 			break;
 		case 'TAGS':
 			if(_.isArray(search)) {
-				query = {tags: {$in: search.map(function (e) {return e.toLowerCase();})}}
+				query = {tags: {$in: search.map(function (e) {return e.toLowerCase();})}};
 			} else {
 				query = {tags: {$regex: new RegExp(search, 'i')}};
 			}
