@@ -15,8 +15,8 @@ router.get('/:id', function (req, res, next) {
 	});
 });
 
-router.get('/res/:reso', function (req, res, next) {
-	var resolution = req.params.reso;
+router.get('/res/:resolution', function (req, res, next) {
+	var resolution = req.params.resolution;
 	dataSource.getWpByRes(resolution, function (err, wallpapers) {
 		if (err) {
 			return next(err);
@@ -45,7 +45,7 @@ router.get('/category/:cat', function (req, res, next) {
 	});
 });
 
-router.get('/sorted/:sort/:limit', function (req, res) {
+router.get('/sorted/:sort/:limit', function (req, res, next) {
 	var sort = req.params.sort;
 	var limit = req.params.limit;
 	dataSource.getSorted(sort, limit, function (err, wallpapers) {
