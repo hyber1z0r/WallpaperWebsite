@@ -55,62 +55,52 @@ function getWpByRes(res, callback) {
 	});
 }
 
-function searchTags(search, callback) {
-	var cb = function (err, wps) {
+
+function searchField(search, field, callback) {
+	var query = {};
+	var e;
+	if(!field) {
+		var error = new Error('No search field given');
+		error.status = 500;
+		return callback(error);
+	}
+	switch (field.toUpperCase()) {
+		case 'CATEGORY':
+			if(_.isArray(search)) {
+				query = {category: {$in: search.map(function (e) {return e.toLowerCase();})}}
+			} else {
+				query = {category: {$regex: new RegExp(search, 'i')}};
+			}
+			e = new Error('Not found for given category');
+			break;
+		case 'TAGS':
+			if(_.isArray(search)) {
+				query = {tags: {$in: search.map(function (e) {return e.toLowerCase();})}}
+			} else {
+				query = {tags: {$regex: new RegExp(search, 'i')}};
+			}
+			e = new Error('Not found for given tag(s)');
+			break;
+	}
+	e.status = 404;
+	wallpaper.find(query, function (err, wps) {
 		if (err) {
 			callback(err);
 		} else if (wps.length === 0) {
-			var e = new Error('Not found for given resolution');
-			e.status = 404;
 			callback(e);
 		} else {
 			callback(null, wps);
 		}
-	};
-
-	// TODO: Fix so it functions as a reg-exp, and not just assumes that all tags in db is stored lowerCase.
-	if (_.isArray(search)) {
-		wallpaper.find({
-			tags: {
-				$in: search.map(function (e) {
-					return e.toLowerCase();
-				})
-			}
-		}, cb);
-	} else {
-		wallpaper.find({tags: {$regex: new RegExp(search, 'i')}}, cb);
-	}
+	});
 }
 
-function searchCategory(search, callback) {
-	var cb = function (err, wps) {
-		if (err) {
-			callback(err);
-		} else if (wps.length === 0) {
-			var e = new Error('Not found for given category');
-			e.status = 404;
-			callback(e);
-		} else {
-			callback(null, wps);
-		}
-	};
-
-	// TODO: Fix so it functions as a reg-exp, and not just assumes that all categories in db is stored lowerCase.
-	if (_.isArray(search)) {
-		wallpaper.find({
-			category: {
-				$in: search.map(function (e) {
-					return e.toLowerCase();
-				})
-			}
-		}, cb);
-	} else {
-		wallpaper.find({category: {$regex: new RegExp(search, 'i')}}, cb);
-	}
-}
-
-// sort by views or added date
+// sort by views, added date or what you want
 function getSorted(sort, limit, callback) {
+	if (!sort) {
+		var e = new Error('No sort attribute given');
+		e.status = 500;
+		return callback(e);
+	}
 	wallpaper.find({}, '', {sort: sort, limit: limit || 20}, function (err, wps) {
 		if (err) {
 			callback(err);
@@ -125,7 +115,6 @@ function getSorted(sort, limit, callback) {
 module.exports = {
 	getWallpaper: getWallpaper,
 	getWpByRes: getWpByRes,
-	searchTags: searchTags,
-	searchCategory: searchCategory,
+	searchField: searchField,
 	getSorted: getSorted
 };

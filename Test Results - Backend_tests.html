@@ -572,8 +572,8 @@ jQuery.cookie = function(name, value, options) {
 <body>
 <div id="container">
 <div id="header">
-<div class="time">634 ms</div>
-<h1>Backend tests: <strong><span class="total">43 total, </span><span class="passed">43 passed</span></strong>
+<div class="time">691 ms</div>
+<h1>Backend tests: <strong><span class="total">45 total, </span><span class="passed">45 passed</span></strong>
 </h1>
 <div id="treecontrol">
 <ul>
@@ -591,7 +591,7 @@ jQuery.cookie = function(name, value, options) {
 <ul id="tree">
 <li xmlns="" class="level top open">
 <span><em class="time">
-<div class="time">50 ms</div>
+<div class="time">49 ms</div>
 </em>dataSource</span>
 <ul>
 <li class="level suite open">
@@ -601,7 +601,7 @@ jQuery.cookie = function(name, value, options) {
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">8 ms</div>
+<div class="time">6 ms</div>
 </em><em class="status">passed</em>Should return one wallpaper with given id</span>
 <ul>
 <li class="text">
@@ -616,7 +616,7 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">3 ms</div>
+<div class="time">5 ms</div>
 </em><em class="status">passed</em>Should increase views by one each time you request it</span>
 </li>
 </ul>
@@ -651,38 +651,31 @@ jQuery.cookie = function(name, value, options) {
 <li class="level suite open">
 <span><em class="time">
 <div class="time">17 ms</div>
-</em>searchTags</span>
+</em>searchField</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">14 ms</div>
+<div class="time">4 ms</div>
 </em><em class="status">passed</em>Should return 3 wallpapers when given a string in the correct format</span>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">4 ms</div>
 </em><em class="status">passed</em>Should return 3 wallpapers when given a string in some weird format</span>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">2 ms</div>
 </em><em class="status">passed</em>Should return 5 wallpapers when given an array of search strings in correct format</span>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">2 ms</div>
 </em><em class="status">passed</em>Should return 5 wallpapers when given an array of search strings in weird format</span>
 </li>
-</ul>
-</li>
-<li class="level suite open">
-<span><em class="time">
-<div class="time">5 ms</div>
-</em>searchCategory</span>
-<ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">2 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Should return 2 wallpapers when given a string in the correct format</span>
 </li>
 <li class="level test">
@@ -692,40 +685,50 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
 </em><em class="status">passed</em>Should return 4 wallpapers when given an array of search strings in correct format</span>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">3 ms</div>
 </em><em class="status">passed</em>Should return 4 wallpapers when given an array of search strings in weird format</span>
+</li>
+<li class="level test">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Should return status 500 when dev is an idiot</span>
 </li>
 </ul>
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">9 ms</div>
+<div class="time">13 ms</div>
 </em>getSorted</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">3 ms</div>
+<div class="time">4 ms</div>
 </em><em class="status">passed</em>Should return 5 sorted by added-date</span>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">2 ms</div>
+<div class="time">3 ms</div>
 </em><em class="status">passed</em>Should return the 20 latest when no limit is given, sorted by newest first</span>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">2 ms</div>
+<div class="time">3 ms</div>
 </em><em class="status">passed</em>Should return the 5 hottest, sorted by highest first</span>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">2 ms</div>
+<div class="time">3 ms</div>
 </em><em class="status">passed</em>Should return the 20 hottest when no limit is given, sorted by highest first</span>
+</li>
+<li class="level test">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Should return status 500 when dev is an idiot</span>
 </li>
 </ul>
 </li>
@@ -733,17 +736,17 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level top open">
 <span><em class="time">
-<div class="time">584 ms</div>
+<div class="time">642 ms</div>
 </em>REST API</span>
 <ul>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">267 ms</div>
+<div class="time">298 ms</div>
 </em>/:id</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">24 ms</div>
+<div class="time">29 ms</div>
 </em><em class="status">passed</em>Should return 1 wallpaper with id 2</span>
 <ul>
 <li class="text">
@@ -753,13 +756,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">10.941 ms - 136<br/></span>
+<span class="stdout">10.082 ms - 136<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">201 ms</div>
+<div class="time">215 ms</div>
 </em><em class="status">passed</em>Should return 404 when requested id does not exist</span>
 <ul>
 <li class="text">
@@ -769,13 +772,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">404 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">197.339 ms - 1226<br/></span>
+<span class="stdout">211.626 ms - 1226<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">25 ms</div>
+<div class="time">37 ms</div>
 </em><em class="status">passed</em>Should return 400 when requested id is not an id</span>
 <ul>
 <li class="text">
@@ -785,7 +788,7 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">400 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">22.570 ms - 4349<br/></span>
+<span class="stdout">32.783 ms - 4349<br/></span>
 </li>
 </ul>
 </li>
@@ -801,7 +804,7 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">404 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">15.961 ms - 3936<br/></span>
+<span class="stdout">14.671 ms - 3936<br/></span>
 </li>
 </ul>
 </li>
@@ -809,12 +812,12 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">80 ms</div>
+<div class="time">91 ms</div>
 </em>/res/:res</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">33 ms</div>
+<div class="time">46 ms</div>
 </em><em class="status">passed</em>Should return 8 wallpapers with the given resolution</span>
 <ul>
 <li class="text">
@@ -824,13 +827,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">11.152 ms - 273640<br/></span>
+<span class="stdout">38.429 ms - 273640<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">26 ms</div>
+<div class="time">15 ms</div>
 </em><em class="status">passed</em>Should return 8 wallpapers with the given resolution (case insensitive)</span>
 <ul>
 <li class="text">
@@ -840,13 +843,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">19.687 ms - 273640<br/></span>
+<span class="stdout">6.678 ms - 273640<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">11 ms</div>
+<div class="time">16 ms</div>
 </em><em class="status">passed</em>Should return status 400 when resolution is not in valid format</span>
 <ul>
 <li class="text">
@@ -856,13 +859,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">400 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">9.531 ms - 4347<br/></span>
+<span class="stdout">13.014 ms - 4347<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">10 ms</div>
+<div class="time">14 ms</div>
 </em><em class="status">passed</em>Should return status 404 when the resolution is not found</span>
 <ul>
 <li class="text">
@@ -872,7 +875,7 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">404 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">9.516 ms - 1242<br/></span>
+<span class="stdout">12.658 ms - 1242<br/></span>
 </li>
 </ul>
 </li>
@@ -880,12 +883,12 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">57 ms</div>
+<div class="time">75 ms</div>
 </em>/tags/:queries</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">11 ms</div>
+<div class="time">19 ms</div>
 </em><em class="status">passed</em>Should return 3 wallpapers with the right tags</span>
 <ul>
 <li class="text">
@@ -895,13 +898,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">7.207 ms - 272878<br/></span>
+<span class="stdout">6.800 ms - 272878<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">10 ms</div>
+<div class="time">12 ms</div>
 </em><em class="status">passed</em>Should return 3 wallpapers with the right tags wierd format</span>
 <ul>
 <li class="text">
@@ -911,13 +914,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">5.555 ms - 272878<br/></span>
+<span class="stdout">7.220 ms - 272878<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">13 ms</div>
+<div class="time">14 ms</div>
 </em><em class="status">passed</em>Should return 5 wallpapers when given an array of search strings in correct format</span>
 <ul>
 <li class="text">
@@ -927,13 +930,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">7.105 ms - 273187<br/></span>
+<span class="stdout">7.561 ms - 273187<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">8 ms</div>
+<div class="time">12 ms</div>
 </em><em class="status">passed</em>Should return 400 when no tag is entered</span>
 <ul>
 <li class="text">
@@ -943,13 +946,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">400 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">6.737 ms - 4340<br/></span>
+<span class="stdout">9.039 ms - 4340<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">15 ms</div>
+<div class="time">18 ms</div>
 </em><em class="status">passed</em>Should return 404 when tag is not found</span>
 <ul>
 <li class="text">
@@ -959,7 +962,7 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">404 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">12.916 ms - 1227<br/></span>
+<span class="stdout">16.351 ms - 4337<br/></span>
 </li>
 </ul>
 </li>
@@ -967,12 +970,12 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">54 ms</div>
+<div class="time">51 ms</div>
 </em>/category/:queries</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">11 ms</div>
+<div class="time">10 ms</div>
 </em><em class="status">passed</em>Should return 2 wallpapers with the right category</span>
 <ul>
 <li class="text">
@@ -982,13 +985,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">4.535 ms - 272735<br/></span>
+<span class="stdout">5.025 ms - 272735<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">14 ms</div>
+<div class="time">10 ms</div>
 </em><em class="status">passed</em>Should return 2 wallpapers with the right tags wierd format</span>
 <ul>
 <li class="text">
@@ -998,13 +1001,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">9.226 ms - 272735<br/></span>
+<span class="stdout">5.602 ms - 272735<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">4 ms</div>
+<div class="time">5 ms</div>
 </em><em class="status">passed</em>Should return 4 wallpapers when given an array of search strings in correct format</span>
 <ul>
 <li class="text">
@@ -1014,13 +1017,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">1.968 ms - 600<br/></span>
+<span class="stdout">3.542 ms - 600<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">13 ms</div>
+<div class="time">12 ms</div>
 </em><em class="status">passed</em>Should return 400 when no category is entered</span>
 <ul>
 <li class="text">
@@ -1030,13 +1033,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">400 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">9.112 ms - 4340<br/></span>
+<span class="stdout">7.977 ms - 4340<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">12 ms</div>
+<div class="time">14 ms</div>
 </em><em class="status">passed</em>Should return 404 when category is not found</span>
 <ul>
 <li class="text">
@@ -1046,7 +1049,7 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">404 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">11.591 ms - 1223<br/></span>
+<span class="stdout">12.760 ms - 4359<br/></span>
 </li>
 </ul>
 </li>
@@ -1054,12 +1057,12 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">126 ms</div>
+<div class="time">127 ms</div>
 </em>/sorted/:sort/:limit</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">6 ms</div>
+<div class="time">5 ms</div>
 </em><em class="status">passed</em>Should return 5 sorted by added-date</span>
 <ul>
 <li class="text">
@@ -1069,13 +1072,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">3.703 ms - 737<br/></span>
+<span class="stdout">2.321 ms - 737<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">19 ms</div>
+<div class="time">24 ms</div>
 </em><em class="status">passed</em>Should return 20 when no limit is entered, sorted by added-date</span>
 <ul>
 <li class="text">
@@ -1085,13 +1088,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">7.494 ms - 273940<br/></span>
+<span class="stdout">13.114 ms - 273940<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">26 ms</div>
+<div class="time">25 ms</div>
 </em><em class="status">passed</em>Should return 20 when gibberish is entered, sorted by added-date</span>
 <ul>
 <li class="text">
@@ -1101,13 +1104,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">12.300 ms - 273940<br/></span>
+<span class="stdout">13.431 ms - 273940<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">19 ms</div>
+<div class="time">23 ms</div>
 </em><em class="status">passed</em>Should return 5 sorted by views</span>
 <ul>
 <li class="text">
@@ -1117,13 +1120,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">10.473 ms - 273189<br/></span>
+<span class="stdout">15.939 ms - 273189<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">28 ms</div>
+<div class="time">34 ms</div>
 </em><em class="status">passed</em>Should return 20 when no limit is entered, sorted by views</span>
 <ul>
 <li class="text">
@@ -1133,13 +1136,13 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">16.940 ms - 273940<br/></span>
+<span class="stdout">25.107 ms - 273940<br/></span>
 </li>
 </ul>
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">28 ms</div>
+<div class="time">16 ms</div>
 </em><em class="status">passed</em>Should return 20 when gibberish is entered, sorted by views</span>
 <ul>
 <li class="text">
@@ -1149,7 +1152,7 @@ jQuery.cookie = function(name, value, options) {
 <span class="stdout">200 <br/></span>
 </li>
 <li class="text">
-<span class="stdout">20.744 ms - 273940<br/></span>
+<span class="stdout">9.576 ms - 273940<br/></span>
 </li>
 </ul>
 </li>
@@ -1161,7 +1164,7 @@ jQuery.cookie = function(name, value, options) {
 </div>
 </div>
 <div id="footer">
-<p>Generated by WebStorm on 25-01-15 20:17</p>
+<p>Generated by WebStorm on 25-01-15 22:16</p>
 </div>
 </body>
 </html>

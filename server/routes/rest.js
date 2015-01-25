@@ -27,7 +27,7 @@ router.get('/res/:reso', function (req, res, next) {
 
 router.get('/tags/:tag', function (req, res, next) {
 	var tags = req.params.tag.split(',');
-	dataSource.searchTags(tags, function (err, wallpapers) {
+	dataSource.searchField(tags, 'tags', function (err, wallpapers) {
 		if (err) {
 			return next(err);
 		}
@@ -37,7 +37,7 @@ router.get('/tags/:tag', function (req, res, next) {
 
 router.get('/category/:cat', function (req, res, next) {
 	var categories = req.params.cat.split(',');
-	dataSource.searchCategory(categories, function (err, wallpapers) {
+	dataSource.searchField(categories, 'category', function (err, wallpapers) {
 		if (err) {
 			return next(err);
 		}

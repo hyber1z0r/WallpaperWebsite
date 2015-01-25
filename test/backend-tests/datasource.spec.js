@@ -99,13 +99,52 @@ describe('dataSource', function () {
 		});
 	});
 
-	describe('searchTags', function () {
+	//describe('searchCategory', function () {
+	//	it('Should return 2 wallpapers when given a string in the correct format', function (done) {
+	//		var search = 'general'; // id: 1, 2 has General as category
+	//		dataSource.searchCategory(search, function (err, wps) {
+	//			should.not.exist(err);
+	//			wps.length.should.equal(2);
+	//			done();
+	//		});
+	//	});
+	//
+	//	it('Should return 2 wallpapers when given a string in some weird format', function (done) {
+	//		var search = 'geNeRAl'; // id: 1, 2 has General as category
+	//		dataSource.searchCategory(search, function (err, wps) {
+	//			should.not.exist(err);
+	//			wps.length.should.equal(2);
+	//			done();
+	//		});
+	//	});
+	//
+	//	it('Should return 4 wallpapers when given an array of search strings in correct format', function (done) {
+	//		var search = ['pokémon', 'anime']; // id: 3, 4 has Pokémon as a category - 5, 6 has Anime
+	//		dataSource.searchCategory(search, function (err, wps) {
+	//			should.not.exist(err);
+	//			wps.length.should.equal(4);
+	//			done();
+	//		});
+	//	});
+	//
+	//	it('Should return 4 wallpapers when given an array of search strings in weird format', function (done) {
+	//		var search = ['pOkÉMOn', 'aNIMe']; // id: 3, 4 has Pokémon as a category - 5, 6 has Anime
+	//		dataSource.searchCategory(search, function (err, wps) {
+	//			should.not.exist(err);
+	//			wps.length.should.equal(4);
+	//			done();
+	//		});
+	//	});
+	//});
+
+	describe('searchField', function () {
 		it('Should return 3 wallpapers when given a string in the correct format', function (done) {
 			var search = 'flower'; // id: 1, 2, 8 has flower as a tag
-			dataSource.searchTags(search, function (err, wps) {
+			var field = 'tags';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(3);
-				for(var i = 0; i < wps.length; i++) {
+				for (var i = 0; i < wps.length; i++) {
 					wps[i].tags.indexOf(search).should.not.equal(-1);
 				}
 				done();
@@ -114,10 +153,11 @@ describe('dataSource', function () {
 
 		it('Should return 3 wallpapers when given a string in some weird format', function (done) {
 			var search = 'fLoWEr'; // id: 1, 2, 8 has flower as a tag
-			dataSource.searchTags(search, function (err, wps) {
+			var field = 'tags';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(3);
-				for(var i = 0; i < wps.length; i++) {
+				for (var i = 0; i < wps.length; i++) {
 					wps[i].tags.indexOf(search.toLowerCase()).should.not.equal(-1);
 				}
 				done();
@@ -126,7 +166,8 @@ describe('dataSource', function () {
 
 		it('Should return 5 wallpapers when given an array of search strings in correct format', function (done) {
 			var search = ['flower', 'outside']; // id: 1, 2, 8 has flower as a tag, 1, 5, 7 has outside. - No duplicates
-			dataSource.searchTags(search, function (err, wps) {
+			var field = 'tags';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(5);
 				done();
@@ -135,18 +176,18 @@ describe('dataSource', function () {
 
 		it('Should return 5 wallpapers when given an array of search strings in weird format', function (done) {
 			var search = ['fLoWEr', 'OUTsidE']; // id: 1, 2, 8 has flower as a tag, 1, 5, 7 has outside. - No duplicates
-			dataSource.searchTags(search, function (err, wps) {
+			var field = 'tags';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(5);
 				done();
 			});
 		});
-	});
 
-	describe('searchCategory', function () {
 		it('Should return 2 wallpapers when given a string in the correct format', function (done) {
 			var search = 'general'; // id: 1, 2 has General as category
-			dataSource.searchCategory(search, function (err, wps) {
+			var field = 'category';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(2);
 				done();
@@ -155,7 +196,8 @@ describe('dataSource', function () {
 
 		it('Should return 2 wallpapers when given a string in some weird format', function (done) {
 			var search = 'geNeRAl'; // id: 1, 2 has General as category
-			dataSource.searchCategory(search, function (err, wps) {
+			var field = 'category';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(2);
 				done();
@@ -164,7 +206,8 @@ describe('dataSource', function () {
 
 		it('Should return 4 wallpapers when given an array of search strings in correct format', function (done) {
 			var search = ['pokémon', 'anime']; // id: 3, 4 has Pokémon as a category - 5, 6 has Anime
-			dataSource.searchCategory(search, function (err, wps) {
+			var field = 'category';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(4);
 				done();
@@ -173,9 +216,21 @@ describe('dataSource', function () {
 
 		it('Should return 4 wallpapers when given an array of search strings in weird format', function (done) {
 			var search = ['pOkÉMOn', 'aNIMe']; // id: 3, 4 has Pokémon as a category - 5, 6 has Anime
-			dataSource.searchCategory(search, function (err, wps) {
+			var field = 'category';
+			dataSource.searchField(search, field, function (err, wps) {
 				should.not.exist(err);
 				wps.length.should.equal(4);
+				done();
+			});
+		});
+
+		it('Should return status 500 when dev is an idiot', function (done) {
+			var search = ['pOkÉMOn', 'aNIMe']; // id: 3, 4 has Pokémon as a category - 5, 6 has Anime
+			var field = null;
+			dataSource.searchField(search, field, function (err, wps) {
+				err.message.should.equal('No search field given');
+				err.status.should.equal(500);
+				should.not.exist(wps); // data is null when not found
 				done();
 			});
 		});
@@ -202,7 +257,7 @@ describe('dataSource', function () {
 				should.not.exist(err);
 				wps.length.should.equal(10);
 				for (var i = 0; i < wps.length - 1; i++) {
-					wps[i].added.should.be.greaterThan(wps[i+1].added); // checking they are sorted
+					wps[i].added.should.be.greaterThan(wps[i + 1].added); // checking they are sorted
 				}
 				done();
 			});
@@ -214,7 +269,7 @@ describe('dataSource', function () {
 			dataSource.getSorted(sort, limit, function (err, wps) {
 				should.not.exist(err);
 				for (var i = 0; i < wps.length - 1; i++) {
-					wps[i].views.should.be.greaterThan(wps[i+1].views); // checking they are sorted
+					wps[i].views.should.be.greaterThan(wps[i + 1].views); // checking they are sorted
 				}
 				wps[0].views.should.equal(83); // id: 10 is the highest and has 83 views
 				wps[1].views.should.equal(60); // id: 9 is the seconds highest and has 60 views!
@@ -232,10 +287,21 @@ describe('dataSource', function () {
 				should.not.exist(err);
 				wps.length.should.equal(10);
 				for (var i = 0; i < wps.length - 1; i++) {
-					wps[i].views.should.be.greaterThan(wps[i+1].views); // checking they are sorted
+					wps[i].views.should.be.greaterThan(wps[i + 1].views); // checking they are sorted
 				}
 				wps[0].views.should.equal(83); // id: 10 is the highest and has 83 views
 				wps[1].views.should.equal(60); // id: 9 is the seconds highest and has 60 views!
+				done();
+			});
+		});
+
+		it('Should return status 500 when dev is an idiot', function (done) {
+			var limit = 10;
+			var sort = null;
+			dataSource.getSorted(sort, limit, function (err, wps) {
+				err.message.should.equal('No sort attribute given');
+				err.status.should.equal(500);
+				should.not.exist(wps); // data is null when not found
 				done();
 			});
 		});
