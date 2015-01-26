@@ -110,11 +110,22 @@ function getSorted(sort, limit, callback) {
     });
 }
 
+function getRandom(limit, callback) {
+    wallpaper.findRandom({}, '', {limit: limit || 20}, function (err, wps) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null, wps);
+        }
+    })
+}
+
 // TODO: GETS ARE MADE, NOW WE NEED SOME ADDING, UPDATING AND DELETING!
 
 module.exports = {
     getWallpaper: getWallpaper,
     getWpByRes: getWpByRes,
     searchField: searchField,
-    getSorted: getSorted
+    getSorted: getSorted,
+    getRandom: getRandom
 };

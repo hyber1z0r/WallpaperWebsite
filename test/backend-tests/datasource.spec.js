@@ -99,44 +99,6 @@ describe('dataSource', function () {
         });
     });
 
-    //describe('searchCategory', function () {
-    //	it('Should return 2 wallpapers when given a string in the correct format', function (done) {
-    //		var search = 'general'; // id: 1, 2 has General as category
-    //		dataSource.searchCategory(search, function (err, wps) {
-    //			should.not.exist(err);
-    //			wps.length.should.equal(2);
-    //			done();
-    //		});
-    //	});
-    //
-    //	it('Should return 2 wallpapers when given a string in some weird format', function (done) {
-    //		var search = 'geNeRAl'; // id: 1, 2 has General as category
-    //		dataSource.searchCategory(search, function (err, wps) {
-    //			should.not.exist(err);
-    //			wps.length.should.equal(2);
-    //			done();
-    //		});
-    //	});
-    //
-    //	it('Should return 4 wallpapers when given an array of search strings in correct format', function (done) {
-    //		var search = ['pokémon', 'anime']; // id: 3, 4 has Pokémon as a category - 5, 6 has Anime
-    //		dataSource.searchCategory(search, function (err, wps) {
-    //			should.not.exist(err);
-    //			wps.length.should.equal(4);
-    //			done();
-    //		});
-    //	});
-    //
-    //	it('Should return 4 wallpapers when given an array of search strings in weird format', function (done) {
-    //		var search = ['pOkÉMOn', 'aNIMe']; // id: 3, 4 has Pokémon as a category - 5, 6 has Anime
-    //		dataSource.searchCategory(search, function (err, wps) {
-    //			should.not.exist(err);
-    //			wps.length.should.equal(4);
-    //			done();
-    //		});
-    //	});
-    //});
-
     describe('searchField', function () {
         it('Should return 3 wallpapers when given a string in the correct format', function (done) {
             var search = 'flower'; // id: 1, 2, 8 has flower as a tag
@@ -302,6 +264,25 @@ describe('dataSource', function () {
                 err.message.should.equal('No sort attribute given');
                 err.status.should.equal(500);
                 should.not.exist(wps); // data is null when not found
+                done();
+            });
+        });
+    });
+
+    // How to test a random function? :pPpP
+    describe('getRandom', function () {
+        it('Should get 5 totally random wallpapers', function (done) {
+            var limit = 5;
+            dataSource.getRandom(limit, function (err, wps) {
+                wps.length.should.equal(5);
+                done();
+            });
+        });
+
+        it('Should return 20 when no limit is entered', function (done) {
+            var limit = null;
+            dataSource.getRandom(limit, function (err, wps) {
+                wps.length.should.equal(10);
                 done();
             });
         });

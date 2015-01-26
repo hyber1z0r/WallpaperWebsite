@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
+var randomPlugin = require('mongoose-simple-random');
 var Schema = mongoose.Schema;
 var dbURI = 'mongodb://localhost/hyber1z0r';
 
 //This is set by the backend tests
-if (typeof global.TEST_DATABASE !== "undefined") {
+if (typeof global.TEST_DATABASE !== 'undefined') {
     dbURI = global.TEST_DATABASE;
 }
 
@@ -40,6 +41,9 @@ var wallpaperSchema = new Schema({
     views: {type: Number, default: 0},
     added: {type: Date, default: Date.now()}
 });
+
+wallpaperSchema.plugin(randomPlugin);
+
 mongoose.model('Wallpaper', wallpaperSchema, 'wallpapers');
 
 

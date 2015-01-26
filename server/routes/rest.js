@@ -56,4 +56,15 @@ router.get('/sorted/:sort/:limit', function (req, res, next) {
     });
 });
 
+router.get('/random/:limit', function (req, res) {
+    var limit = req.params.limit;
+    limit = limit === 0 ? null : limit;
+    dataSource.getRandom(limit, function (err, wallpapers) {
+        if (err) {
+            return next(err);
+        }
+        res.json(wallpapers);
+    });
+});
+
 module.exports = router;
