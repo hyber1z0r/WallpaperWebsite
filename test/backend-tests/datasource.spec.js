@@ -257,12 +257,12 @@ describe('dataSource', function () {
             });
         });
 
-        it('Should return status 500 when dev is an idiot', function (done) {
+        it('Should return status 400 when dev is an idiot', function (done) {
             var limit = 10;
             var sort = null;
             dataSource.getSorted(sort, limit, function (err, wps) {
                 err.message.should.equal('No sort attribute given');
-                err.status.should.equal(500);
+                err.status.should.equal(400);
                 should.not.exist(wps); // data is null when not found
                 done();
             });

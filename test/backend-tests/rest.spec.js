@@ -283,5 +283,13 @@ describe('REST API', function () {
                     done();
                 });
         });
+
+        it('Should return 400 when no sort is given', function (done) {
+            var limit = 5;
+            var sort = null;
+            supertest(app)
+                .get('/api/sorted/' + sort + '/' + limit)
+                .expect(400, done);
+        });
     });
 });

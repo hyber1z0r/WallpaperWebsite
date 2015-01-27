@@ -96,9 +96,9 @@ function searchField(search, field, callback) {
 
 // sort by views, added date or what you want
 function getSorted(sort, limit, callback) {
-    if (!sort) {
+    if (!sort || sort === 'null') {
         var e = new Error('No sort attribute given');
-        e.status = 500;
+        e.status = 400;
         return callback(e);
     }
     wallpaper.find({}, '', {sort: sort, limit: limit || 20}, function (err, wps) {

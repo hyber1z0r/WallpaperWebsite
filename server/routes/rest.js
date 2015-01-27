@@ -56,7 +56,7 @@ router.get('/sorted/:sort/:limit', function (req, res, next) {
     });
 });
 
-router.get('/random/:limit', function (req, res) {
+router.get('/random/:limit', function (req, res, next) {
     var limit = req.params.limit;
     limit = limit === 0 ? null : limit;
     dataSource.getRandom(limit, function (err, wallpapers) {
