@@ -9,6 +9,9 @@ angular.module('hyber.controllers', []).
         $scope.searchTt = {
             'title': 'Search'
         };
+        $scope.uploadTt = {
+            'title': 'Upload'
+        };
     });
 
 

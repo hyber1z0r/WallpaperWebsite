@@ -39,5 +39,9 @@ angular.module('hyber', [
                 templateUrl: 'app/wallpaper/wallpaper.html',
                 controller: 'WallpaperCtrl'
             })
+            .when('/upload', {
+                templateUrl: 'app/upload/upload.html',
+                controller: 'UploadCtrl'
+            })
             .otherwise({redirectTo: '/home'});
     }]);
