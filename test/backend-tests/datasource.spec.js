@@ -6,7 +6,7 @@ var should = require('should');
 var app = require('../../server/app');
 var mongoose = require('mongoose');
 var wallpaper = mongoose.model('Wallpaper');
-var data = require('./data.json').splice(0, 10);
+var data = require('./data.json').splice(0, 30);
 var dataSource = require('../../server/model/datasource');
 
 describe('dataSource', function () {
@@ -64,7 +64,7 @@ describe('dataSource', function () {
             var res = '1920x1080';
             dataSource.getWpByRes(res, function (err, data) {
                 should.not.exist(err);
-                data.length.should.equal(8);
+                data.length.should.equal(7);
                 done();
             });
         });
@@ -83,7 +83,7 @@ describe('dataSource', function () {
             var res = '1280X720';
             dataSource.getWpByRes(res, function (err, data) {
                 should.not.exist(err);
-                data.length.should.equal(1);
+                data.length.should.equal(11);
                 done();
             });
         });
@@ -210,14 +210,13 @@ describe('dataSource', function () {
                 done();
             });
         });
-        // TODO: Get more sample data to prove that this works! (Above 20 wallpapers)
-        // Now it's just returning all -> 10 wallpapers
+
         it('Should return the 20 latest when no limit is given, sorted by newest first', function (done) {
             var limit = null;
             var sort = '-added';
             dataSource.getSorted(sort, limit, function (err, wps) {
                 should.not.exist(err);
-                wps.length.should.equal(10);
+                wps.length.should.equal(20);
                 for (var i = 0; i < wps.length - 1; i++) {
                     wps[i].added.should.be.greaterThan(wps[i + 1].added); // checking they are sorted
                 }
@@ -233,26 +232,24 @@ describe('dataSource', function () {
                 for (var i = 0; i < wps.length - 1; i++) {
                     wps[i].views.should.be.greaterThan(wps[i + 1].views); // checking they are sorted
                 }
-                wps[0].views.should.equal(83); // id: 10 is the highest and has 83 views
-                wps[1].views.should.equal(60); // id: 9 is the seconds highest and has 60 views!
+                wps[0].views.should.equal(99); // id: 29 is the highest and has 99 views
+                wps[1].views.should.equal(98); // id: 25 is the seconds highest and has 98 views!
                 wps.length.should.equal(5);
                 done();
             });
         });
 
-        // TODO: Get more sample data to prove that this works! (Above 20 wallpapers)
-        // Now it's just returning all -> 10 wallpapers
         it('Should return the 20 hottest when no limit is given, sorted by highest first', function (done) {
             var limit = null;
             var sort = '-views';
             dataSource.getSorted(sort, limit, function (err, wps) {
                 should.not.exist(err);
-                wps.length.should.equal(10);
+                wps.length.should.equal(20);
                 for (var i = 0; i < wps.length - 1; i++) {
                     wps[i].views.should.be.greaterThan(wps[i + 1].views); // checking they are sorted
                 }
-                wps[0].views.should.equal(83); // id: 10 is the highest and has 83 views
-                wps[1].views.should.equal(60); // id: 9 is the seconds highest and has 60 views!
+                wps[0].views.should.equal(99); // id: 29 is the highest and has 99 views
+                wps[1].views.should.equal(98); // id: 25 is the seconds highest and has 98 views!
                 done();
             });
         });
@@ -282,7 +279,7 @@ describe('dataSource', function () {
         it('Should return 20 when no limit is entered', function (done) {
             var limit = null;
             dataSource.getRandom(limit, function (err, wps) {
-                wps.length.should.equal(10);
+                wps.length.should.equal(20);
                 done();
             });
         });

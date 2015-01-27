@@ -46,7 +46,7 @@ describe('REST API', function () {
                 .get('/api/res/' + resolution)
                 .end(function (err, res) {
                     var wallpapers = JSON.parse(res.text);
-                    wallpapers.length.should.equal(8);
+                    wallpapers.length.should.equal(7);
                     for (var i = 0; i < wallpapers.length; i++) {
                         wallpapers[i].resolution.should.equal(resolution);
                     }
@@ -60,7 +60,7 @@ describe('REST API', function () {
                 .get('/api/res/' + resolution)
                 .end(function (err, res) {
                     var wallpapers = JSON.parse(res.text);
-                    wallpapers.length.should.equal(8);
+                    wallpapers.length.should.equal(7);
                     for (var i = 0; i < wallpapers.length; i++) {
                         wallpapers[i].resolution.should.equal(resolution.toLowerCase()); // resolutions is stored with a small x
                     }
@@ -215,7 +215,7 @@ describe('REST API', function () {
                 .get('/api/sorted/' + sort + '/' + limit)
                 .end(function (err, res) {
                     var wallpapers = JSON.parse(res.text);
-                    wallpapers.length.should.equal(10);
+                    wallpapers.length.should.equal(20);
                     for (var i = 0; i < wallpapers.length - 1; i++) {
                         wallpapers[i].added.should.be.greaterThan(wallpapers[i + 1].added);
                     }
@@ -230,7 +230,7 @@ describe('REST API', function () {
                 .get('/api/sorted/' + sort + '/' + gibber)
                 .end(function (err, res) {
                     var wallpapers = JSON.parse(res.text);
-                    wallpapers.length.should.equal(10);
+                    wallpapers.length.should.equal(20);
                     for (var i = 0; i < wallpapers.length - 1; i++) {
                         wallpapers[i].added.should.be.greaterThan(wallpapers[i + 1].added);
                     }
@@ -261,7 +261,7 @@ describe('REST API', function () {
                 .get('/api/sorted/' + sort + '/' + limit)
                 .end(function (err, res) {
                     var wallpapers = JSON.parse(res.text);
-                    wallpapers.length.should.equal(10);
+                    wallpapers.length.should.equal(20);
                     for (var i = 0; i < wallpapers.length - 1; i++) {
                         wallpapers[i].views.should.be.greaterThan(wallpapers[i + 1].views);
                     }
@@ -276,7 +276,7 @@ describe('REST API', function () {
                 .get('/api/sorted/' + sort + '/' + gibber)
                 .end(function (err, res) {
                     var wallpapers = JSON.parse(res.text);
-                    wallpapers.length.should.equal(10);
+                    wallpapers.length.should.equal(20);
                     for (var i = 0; i < wallpapers.length - 1; i++) {
                         wallpapers[i].views.should.be.greaterThan(wallpapers[i + 1].views);
                     }

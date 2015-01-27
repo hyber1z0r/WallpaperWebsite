@@ -101,6 +101,9 @@ function getSorted(sort, limit, callback) {
         e.status = 400;
         return callback(e);
     }
+    if(isNaN(Number(limit))) {
+        limit = null;
+    }
     wallpaper.find({}, '', {sort: sort, limit: limit || 20}, function (err, wps) {
         if (err) {
             callback(err);

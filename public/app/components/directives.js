@@ -1,7 +1,5 @@
 'use strict';
 
-/* Directives */
-
 angular.module('hyber.directives', []).
     directive('photoGallery', function () {
         return {
