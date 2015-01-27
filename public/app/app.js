@@ -12,8 +12,31 @@ angular.module('hyber', [
     'hyber.services',
     'hyber.home',
     'hyber.latest',
-    'hyber.random'
+    'hyber.random',
+    'hyber.search',
+    'hyber.wallpaper'
 ]).
     config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.otherwise({redirectTo: '/home'});
+        $routeProvider
+            .when('/home', {
+                templateUrl: 'app/home/home.html',
+                controller: 'HomeCtrl'
+            })
+            .when('/latest', {
+                templateUrl: 'app/latest/latest.html',
+                controller: 'LatestCtrl'
+            })
+            .when('/random', {
+                templateUrl: 'app/random/random.html',
+                controller: 'RandomCtrl'
+            })
+            .when('/search', {
+                templateUrl: 'app/search/search.html',
+                controller: 'SearchCtrl'
+            })
+            .when('/wallpaper/:id', {
+                templateUrl: 'app/wallpaper/wallpaper.html',
+                controller: 'WallpaperCtrl'
+            })
+            .otherwise({redirectTo: '/home'});
     }]);

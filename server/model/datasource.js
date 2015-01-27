@@ -117,7 +117,7 @@ function getRandom(limit, callback) {
         } else {
             callback(null, wps);
         }
-    })
+    });
 }
 
 // TODO: GETS ARE MADE, NOW WE NEED SOME ADDING, UPDATING AND DELETING!
