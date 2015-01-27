@@ -16,7 +16,7 @@ function insertAllWps() {
                 console.log('Data inserted');
                 process.exit(0);
             }
-        })
+        });
     });
 }
 

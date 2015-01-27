@@ -9,7 +9,11 @@
         <a class="thumbnail" href="#/wallpaper/{{wallpaper._id}}">
             <img class="img-response" src="data:image/jpg;base64,{{wallpaper.image}}" alt=""/>
         </a>
+        <h3>{{wallpaper.category}}</h3>
+        <p>Added: {{wallpaper.added | date:short}}, views: {{wallpaper.views}}</p>
     </div>
-
+    <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+        <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+    </div>
 </div>
 

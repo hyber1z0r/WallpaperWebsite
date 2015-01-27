@@ -5,6 +5,7 @@ angular.module('hyber', [
     'ngRoute',
     'ngAnimate',
     'mgcrea.ngStrap',
+    'ui.bootstrap',
     'hyber.controllers',
     'hyber.directives',
     'hyber.factories',
