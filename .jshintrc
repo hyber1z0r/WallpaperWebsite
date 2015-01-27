@@ -1,3 +1,9 @@
 {
-  "predef": ["angular"]
+  "predef": [
+    "angular",
+    "console"
+  ],
+  "mocha": true,
+  "node": true,
+  "strict": false
 }
