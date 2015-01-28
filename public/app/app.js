@@ -15,7 +15,8 @@ angular.module('hyber', [
     'hyber.latest',
     'hyber.random',
     'hyber.search',
-    'hyber.wallpaper'
+    'hyber.wallpaper',
+    'hyber.upload'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider
