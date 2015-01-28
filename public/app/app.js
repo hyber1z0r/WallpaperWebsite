@@ -6,7 +6,6 @@ angular.module('hyber', [
     'ngAnimate',
     'mgcrea.ngStrap',
     'ui.bootstrap',
-    'hyber.controllers',
     'hyber.directives',
     'hyber.factories',
     'hyber.filters',
@@ -16,9 +15,10 @@ angular.module('hyber', [
     'hyber.random',
     'hyber.search',
     'hyber.wallpaper',
-    'hyber.upload'
-]).
-    config(['$routeProvider', function ($routeProvider) {
+    'hyber.upload',
+    'hyber.category'
+])
+    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/home', {
                 templateUrl: 'app/home/home.html',
@@ -44,5 +44,26 @@ angular.module('hyber', [
                 templateUrl: 'app/upload/upload.html',
                 controller: 'UploadCtrl'
             })
+            .when('/category', {
+                templateUrl: 'app/category/category.html',
+                controller: 'CategoryCtrl'
+            })
             .otherwise({redirectTo: '/home'});
-    }]);
+    }])
+    .controller('AppCtrl', function ($scope) {
+        $scope.latestTt = {
+            'title': 'Latest'
+        };
+        $scope.randomTt = {
+            'title': 'Random'
+        };
+        $scope.searchTt = {
+            'title': 'Search'
+        };
+        $scope.uploadTt = {
+            'title': 'Upload'
+        };
+        $scope.categoryTt = {
+            'title': 'Categories'
+        }
+    });
