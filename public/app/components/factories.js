@@ -2,27 +2,15 @@
 
 angular.module('hyber.factories', [])
     .factory('WallpaperFactory', function ($http) {
-        var getWallpaper = function (id, callback) {
-            $http.get('/api/wallpaper/' + id)
-                .success(function (data) {
-                    callback(null, data);
-                })
-                .error(function (err) {
-                    callback(err);
-                });
+        var getWallpaper = function (id) {
+            return $http.get('/api/wallpaper/' + id);
         };
 
-        var getWallpapersWithRes = function (res, callback) {
-            $http.get('/api/res/' + res)
-                .success(function (data) {
-                    callback(null, data);
-                })
-                .error(function (err) {
-                    callback(err);
-                });
+        var getWallpapersWithRes = function (res) {
+            return $http.get('/api/res/' + res);
         };
 
-        var searchTags = function (tags, callback) {
+        var searchTags = function (tags) {
             // tags should be an array of strings - should i check for that? No right?
             var search = '';
             for (var i = 0; i < tags.length; i++) {
@@ -33,16 +21,10 @@ angular.module('hyber.factories', [])
                 }
             }
 
-            $http.get('/api/tags/' + search)
-                .success(function (data) {
-                    callback(null, data);
-                })
-                .error(function (err) {
-                    callback(err);
-                });
+            return $http.get('/api/tags/' + search);
         };
 
-        var searchCategory = function (categories, callback) {
+        var searchCategory = function (categories) {
             // categories should be an array of strings - should i check for that? No right?
             var search = '';
             for (var i = 0; i < categories.length; i++) {
@@ -53,23 +35,15 @@ angular.module('hyber.factories', [])
                 }
             }
 
-            $http.get('/api/category/' + search)
-                .success(function (data) {
-                    callback(null, data);
-                })
-                .error(function (err) {
-                    callback(err);
-                });
+            return $http.get('/api/category/' + search);
         };
 
-        var getSorted = function (sort, limit, callback) {
-            $http.get('/api/sorted/' + sort + '/' + limit)
-                .success(function (data) {
-                    callback(null, data);
-                })
-                .error(function (err) {
-                    callback(err);
-                });
+        var getSorted = function (sort, limit) {
+            return $http.get('/api/sorted/' + sort + '/' + limit);
+        };
+
+        var getRandom = function (limit) {
+            return $http.get('/api/random/' + limit);
         };
 
         return {
@@ -77,7 +51,8 @@ angular.module('hyber.factories', [])
             getWallpapersWithRes: getWallpapersWithRes,
             searchTags: searchTags,
             searchCategory: searchCategory,
-            getSorted: getSorted
+            getSorted: getSorted,
+            getRandom: getRandom
         };
     });
 

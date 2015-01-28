@@ -4,13 +4,13 @@
 'use strict';
 
 angular.module('hyber.latest', ['ngRoute']).controller('LatestCtrl', function ($scope, WallpaperFactory) {
-        var limit = 20;
-        var sort = '-added';
-        WallpaperFactory.getSorted(sort, limit, function (err, data) {
-            if (err) {
-                console.log(err);
-            } else {
-                $scope.wallpaperData = data;
-            }
-        });
-    });
+    var limit = 20;
+    var sort = '-added';
+    WallpaperFactory.getSorted(sort, limit)
+        .success(function (data) {
+            $scope.wallpaperData = data;
+        })
+        .error(function (reason) {
+            $scope.error = reason;
+        })
+});

@@ -3,12 +3,12 @@
  */
 angular.module('hyber.wallpaper', ['ngRoute']).controller('WallpaperCtrl', function ($scope, WallpaperFactory, $routeParams) {
     if ($routeParams.id) {
-        WallpaperFactory.getWallpaper($routeParams.id, function (err, wallpaper) {
-            if (err) {
-                console.log(err);
-            } else {
-                $scope.wallpaper = wallpaper;
-            }
-        });
+        WallpaperFactory.getWallpaper($routeParams.id)
+            .success(function (data) {
+                $scope.wallpaper = data;
+            })
+            .error(function (reason) {
+                $scope.error = reason;
+            })
     }
 });
