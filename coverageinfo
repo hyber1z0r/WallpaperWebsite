@@ -6,5 +6,5 @@ Run this command from root of project.
 istanbul cover _mocha -- test/backend-tests -R spec
 
 To send coverage data to CodeClimate
-Run this command from coverage folder
-CODECLIMATE_REPO_TOKEN=e89e6b538c9f89968698ec93394f04bf04fb008d052473b05ad5d2264427a0b0 codeclimate < lcov.info
+Run this command from root of project
+CODECLIMATE_REPO_TOKEN=e89e6b538c9f89968698ec93394f04bf04fb008d052473b05ad5d2264427a0b0 codeclimate < coverage/lcov.info

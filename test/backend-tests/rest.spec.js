@@ -292,4 +292,30 @@ describe('REST API', function () {
                 .expect(400, done);
         });
     });
+
+    describe('/random/:limit', function () {
+        it('Should return 5 totally random wallpapers', function (done) {
+            var limit = 5;
+            supertest(app)
+                .get('/api/random/' + limit)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    var wps = JSON.parse(res.text);
+                    wps.length.should.equal(5);
+                    done();
+                });
+        });
+
+        it('Should return 20 when no limit is entered', function (done) {
+            var limit = null;
+            supertest(app)
+                .get('/api/random/' + limit)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    var wps = JSON.parse(res.text);
+                    wps.length.should.equal(20);
+                    done();
+                });
+        });
+    });
 });

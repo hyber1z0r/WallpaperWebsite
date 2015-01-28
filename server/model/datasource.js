@@ -114,6 +114,9 @@ function getSorted(sort, limit, callback) {
 }
 
 function getRandom(limit, callback) {
+    if(isNaN(Number(limit))) {
+        limit = null;
+    }
     wallpaper.findRandom({}, '', {limit: limit || 20}, function (err, wps) {
         if (err) {
             callback(err);
