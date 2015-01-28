@@ -284,4 +284,14 @@ describe('dataSource', function () {
             });
         });
     });
+
+    describe('getDistinctCategories', function () {
+       it('Should return 26 categories', function (done) {
+            dataSource.getDistinctCategories(function (err, cats) {
+                cats.length.should.equal(26);
+                (typeof cats[0]).should.equal('string');
+                done();
+            });
+       });
+    });
 });

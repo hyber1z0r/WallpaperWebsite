@@ -18,7 +18,7 @@ describe('Index', function () {
                     var regex = new RegExp('ng-app="hyber"');
                     regex.test(text).should.equal(true);
                     done();
-                })
-        })
+                });
+        });
     });
 });

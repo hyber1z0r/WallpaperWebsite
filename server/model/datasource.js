@@ -126,6 +126,16 @@ function getRandom(limit, callback) {
     });
 }
 
+function getDistinctCategories(callback) {
+    wallpaper.distinct('category', 'category', function (err, cats) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null, cats);
+        }
+    });
+}
+
 // TODO: GETS ARE MADE, NOW WE NEED SOME ADDING, UPDATING AND DELETING!
 
 module.exports = {
@@ -133,5 +143,6 @@ module.exports = {
     getWpByRes: getWpByRes,
     searchField: searchField,
     getSorted: getSorted,
-    getRandom: getRandom
+    getRandom: getRandom,
+    getDistinctCategories: getDistinctCategories
 };
