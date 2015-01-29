@@ -20,7 +20,6 @@ angular.module('hyber.factories', [])
                     search += tags[i] + ',';
                 }
             }
-
             return $http.get('/api/tags/' + search);
         };
 
@@ -34,7 +33,6 @@ angular.module('hyber.factories', [])
                     search += categories[i] + ',';
                 }
             }
-
             return $http.get('/api/category/' + search);
         };
 
@@ -46,15 +44,19 @@ angular.module('hyber.factories', [])
             return $http.get('/api/random/' + limit);
         };
 
+        var getCategories = function () {
+          return $http.get('/api/category');
+        };
+
         return {
             getWallpaper: getWallpaper,
             getWallpapersWithRes: getWallpapersWithRes,
             searchTags: searchTags,
             searchCategory: searchCategory,
             getSorted: getSorted,
-            getRandom: getRandom
+            getRandom: getRandom,
+            getCategories: getCategories
         };
     });
 
-// TODO: Make rest of factory functions, that speaks with REST
 // TODO: Make tests of factory functions!

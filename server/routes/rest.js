@@ -35,6 +35,15 @@ router.get('/tags/:tag', function (req, res, next) {
     });
 });
 
+router.get('/category', function (req, res) {
+    dataSource.getDistinctCategories(function (err, categories) {
+        if (err) {
+            return next(err);
+        }
+        res.json(categories);
+    });
+});
+g
 router.get('/category/:cat', function (req, res, next) {
     var categories = req.params.cat.split(',');
     dataSource.searchField(categories, 'category', function (err, wallpapers) {

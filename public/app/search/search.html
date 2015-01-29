@@ -5,3 +5,11 @@
     <li>Categories</li>
     <li>Tags</li>
 </ul>
+
+<form class="form-inline" role="form">
+    <div class="form-group">
+        <label><i class="fa fa-list"></i> Category</label>
+        <input type="text" class="form-control" ng-model="selectedCategory" ng-options="category for category in categories" placeholder="Enter category" bs-typeahead>
+    </div>
+    <hr>
+</form>

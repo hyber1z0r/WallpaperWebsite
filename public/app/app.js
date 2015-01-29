@@ -16,7 +16,7 @@ angular.module('hyber', [
     'hyber.search',
     'hyber.wallpaper',
     'hyber.upload',
-    'hyber.category'
+    'hyber.categories'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
@@ -44,9 +44,9 @@ angular.module('hyber', [
                 templateUrl: 'app/upload/upload.html',
                 controller: 'UploadCtrl'
             })
-            .when('/category', {
-                templateUrl: 'app/category/category.html',
-                controller: 'CategoryCtrl'
+            .when('/categories', {
+                templateUrl: 'app/categories/categories.html',
+                controller: 'CategoriesCtrl'
             })
             .otherwise({redirectTo: '/home'});
     }])
