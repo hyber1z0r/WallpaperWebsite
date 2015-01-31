@@ -9,7 +9,8 @@ var _ = require('underscore');
 function getWallpaper(id, callback) {
     // this catches all wrong inputs, such as 'test' instead of e.g '1';
     if (isNaN(Number(id))) {
-        var error = new Error('Input was not an ID');
+        var error = new Error();
+        error.message = 'Input was not an ID';
         error.status = 400;
         return callback(error);
     }
@@ -19,7 +20,8 @@ function getWallpaper(id, callback) {
             callback(err);
         }
         else if (!wp) {
-            var e = new Error('Not found for given id');
+            var e = new Error();
+            e.message = 'Not found for given id';
             e.status = 404;
             callback(e);
         } else {
@@ -38,7 +40,8 @@ function getWallpaper(id, callback) {
 function getWpByRes(res, callback) {
     var reg = new RegExp('[0-9]{1,4}x[0-9]{1,4}', 'i');
     if (!reg.test(res)) {
-        var e = new Error('Input is not a valid resolution');
+        var e = new Error();
+        e.message = 'Input is not a valid resolution';
         e.status = 400;
         return callback(e);
     }
@@ -46,7 +49,8 @@ function getWpByRes(res, callback) {
         if (err) {
             callback(err);
         } else if (wps.length === 0) {
-            var e = new Error('Not found for given resolution');
+            var e = new Error();
+            e.message = 'Not found for given resolution';
             e.status = 404;
             callback(e);
         } else {
@@ -60,7 +64,8 @@ function searchField(search, field, callback) {
     var query = {};
     var e;
     if (!field) {
-        var error = new Error('No search field given');
+        var error = new Error();
+        error.message = 'No search field given';
         error.status = 500;
         return callback(error);
     }
@@ -71,7 +76,8 @@ function searchField(search, field, callback) {
             } else {
                 query = {category: {$regex: new RegExp(search, 'i')}};
             }
-            e = new Error('Not found for given category');
+            e = new Error();
+            e.message = 'Not found for given category';
             break;
         case 'TAGS':
             if (_.isArray(search)) {
@@ -80,6 +86,7 @@ function searchField(search, field, callback) {
                 query = {tags: {$regex: new RegExp(search, 'i')}};
             }
             e = new Error('Not found for given tag(s)');
+            e.message = _.isArray(search) ? 'Not found for given tags' : 'Not found for given tag';
             break;
     }
     e.status = 404;
@@ -97,7 +104,8 @@ function searchField(search, field, callback) {
 // sort by views, added date or what you want
 function getSorted(sort, limit, callback) {
     if (!sort || sort === 'null') {
-        var e = new Error('No sort attribute given');
+        var e = new Error();
+        e.message = 'No sort attribute given';
         e.status = 400;
         return callback(e);
     }

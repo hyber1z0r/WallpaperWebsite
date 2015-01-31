@@ -9,6 +9,7 @@ angular.module('hyber.category', ['ngRoute']).controller('CategoryCtrl', functio
         WallpaperFactory.searchCategory($routeParams.cat)
             .success(function (data) {
                 $scope.wallpaperData = data;
+                $scope.error = '';
             })
             .error(function (reason) {
                 $scope.error = reason;

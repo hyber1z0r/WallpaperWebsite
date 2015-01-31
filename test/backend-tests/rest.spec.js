@@ -177,10 +177,15 @@ describe('REST API', function () {
                 });
         });
 
-        it('Should return 404 when no category is entered', function (done) {
+        it('Should return 200 and all categories when no category is entered', function (done) {
             supertest(app)
                 .get('/api/category/')
-                .expect(404, done);
+                .end(function (err, res) {
+                    var wps = JSON.parse(res.text);
+                    wps.length.should.equal(26);
+                    res.statusCode.should.equal(200);
+                    done();
+                });
         });
 
         it('Should return 404 when category is not found', function (done) {
