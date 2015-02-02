@@ -70,5 +70,5 @@ angular.module('hyber', [
         };
         $scope.categoryTt = {
             'title': 'Categories'
-        }
+        };
     });

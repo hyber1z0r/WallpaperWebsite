@@ -21,5 +21,5 @@ angular.module('hyber.services', [])
                 grouped.push(queue.splice(0, groupSize));
             }
             return grouped;
-        }
+        };
     }]);

@@ -11,5 +11,5 @@ angular.module('hyber.random', ['ngRoute']).controller('RandomCtrl', function ($
         })
         .error(function (reason) {
             $scope.error = reason;
-        })
+        });
 });

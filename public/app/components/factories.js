@@ -45,7 +45,7 @@ angular.module('hyber.factories', [])
         };
 
         var getCategories = function () {
-          return $http.get('/api/category');
+            return $http.get('/api/category');
         };
 
         return {
@@ -57,6 +57,12 @@ angular.module('hyber.factories', [])
             getRandom: getRandom,
             getCategories: getCategories
         };
+    })
+    .factory('latestCache', function ($cacheFactory) {
+        return $cacheFactory('latest');
+    })
+    .factory('categoryCache', function ($cacheFactory) {
+        return $cacheFactory('categories');
     });
 
 // TODO: Make tests of factory functions!

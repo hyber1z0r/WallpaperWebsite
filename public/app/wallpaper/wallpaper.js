@@ -9,6 +9,6 @@ angular.module('hyber.wallpaper', ['ngRoute']).controller('WallpaperCtrl', funct
             })
             .error(function (reason) {
                 $scope.error = reason;
-            })
+            });
     }
 });
