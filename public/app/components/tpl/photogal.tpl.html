@@ -9,7 +9,7 @@
         <a class="thumbnail" ng-href="#/wallpaper/{{wallpaper._id}}">
             <figure>
                 <img class="img-response" ng-src="data:image/jpg;base64,{{wallpaper.image}}" alt="" style="height: 142px"/>
-                <figcaption><p>{{wallpaper.added | date:short}}, views: {{wallpaper.views}}</p></figcaption>
+                <figcaption><p>{{wallpaper.views}}</p><p class="text-center">{{wallpaper.resolution}}</p></figcaption>
             </figure>
         </a>
     </div>

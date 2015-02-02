@@ -5,44 +5,6 @@
     text-align: center;
 }
 
-.photo-grid img {
-    display: block;
-    height: auto;
-    max-width: 100%;
-}
-
-.photo-grid figure {
-    overflow: hidden;
-    position: relative;
-}
-
-.photo-grid figcaption {
-    background: rgba(0,0,0,0.5) !important;
-    color: white !important;
-    display: table;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 100;
-}
-
-.photo-grid figcaption p {
-    display: table-cell;
-    font-size: 1.5em;
-    position: relative;
-    top: -40px;
-    width: 289px;
-    vertical-align: middle;
-}
-
-/* Show text on hover */
-.photo-grid a:hover figcaption {
-    opacity: 1;
-}
-
 /* Zoom the images */
 .photo-grid img {
     display: block;
@@ -53,29 +15,9 @@
     max-width: 100%;
 }
 
-.photo-grid a:hover img {
-    -webkit-transform: scale(1.4);
-    -moz-transform: scale(1.4);
-    transform: scale(1.4);
-}
-
-/* Drop in the text */
-.photo-grid figcaption p {
-    display: table-cell;
-    font-size: 1.5em;
+.photo-grid figure {
+    overflow: hidden;
     position: relative;
-    top: -40px;
-    width: 289px;
-    -webkit-transition: all 300ms ease-out;
-    -moz-transition: all 300ms ease-out;
-    transition: all 300ms ease-out;
-    vertical-align: middle;
-}
-
-.photo-grid a:hover figcaption p {
-    -moz-transform: translateY(40px);
-    -webkit-transform: translateY(40px);
-    transform: translateY(40px);
 }
 
 /* Fade in the caption */
@@ -96,4 +38,35 @@
     -moz-transition-delay: 100ms;
     transition-delay: 100ms;
     z-index: 100;
+}
+
+/* Drop in the text */
+.photo-grid figcaption p {
+    display: table-cell;
+    font-size: 1.0em;
+    color: white;
+    position: relative;
+    top: -40px;
+    width: 289px;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    vertical-align: middle;
+}
+
+/* Show text on hover */
+.photo-grid a:hover figcaption {
+    opacity: 1;
+}
+
+.photo-grid a:hover img {
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+.photo-grid a:hover figcaption p {
+    -moz-transform: translateY(40px);
+    -webkit-transform: translateY(40px);
+    transform: translateY(40px);
 }
